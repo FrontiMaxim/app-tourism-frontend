@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListComponent } from 'src/shared/list/list.component';
 import { ListItemComponent } from 'src/shared/list-item/list-item.component';
 import { ContarctComponent } from './components/contarct/contarct.component';
+import { ClientModule } from './client/client.module';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,14 @@ import { ContarctComponent } from './components/contarct/contarct.component';
     SidebarComponent,
     ListComponent,
     ListItemComponent,
-    ContarctComponent
+    ContarctComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularSvgIconModule.forRoot()
+    AngularSvgIconModule.forRoot(),
+    ClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

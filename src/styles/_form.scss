@@ -1,0 +1,107 @@
+@import './colors';
+
+@mixin primary {
+    background-color: $primary;
+    color: $white;
+}
+
+@mixin default {
+    background-color: $white;
+    color: $dark;
+}
+
+@mixin form {
+
+    .form {
+        display: inline-block;
+
+        padding: 20px;
+
+        box-shadow: 0 0 4px 0 $dark;
+        border-radius: 5px;
+
+        h2 {
+            text-align: center;
+            color: $primary;
+        }
+        
+        .form-group {
+
+            &:not(:first-child) {
+                margin-top: 10px;
+            }
+
+            .form-group_label {
+                font-size: 16px;
+                font-weight: 700;
+                color: $dark;
+    
+                display: block;
+            }
+    
+            .form-group_input {
+    
+                width: 300px;
+    
+                padding: 4px;
+        
+                font-size: 16px;
+            
+                border-radius: 5px;
+                box-shadow: 0 0 4px 0 $dark;
+            
+                border: none;
+                outline: none;  
+
+                &.ng-invalid.ng-touched{ 
+                    border: 2px solid $error;
+                    box-shadow: 0 0 4px 0 $error;
+                }
+            }
+
+            
+            .form-group_error {
+        
+                span {
+                    color: $error;
+                    font-size: 12px;
+                    font-weight: 700;
+                }
+            }
+        }
+
+
+        .form-group-button {
+
+            margin-top: 30px;
+
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            .form-button {
+                width: 140px;
+                height: 30px;
+                border-radius: 5px;
+                box-shadow: 0 0 4px 0 $dark;
+    
+                transition: all .2s;
+    
+                @include default;
+    
+                &:hover {
+                    @include primary;
+                }
+
+                &.primary {
+                    @include primary;
+        
+                    &:hover {
+                        @include default;
+                    }
+                }
+            }
+        }
+    }
+}
