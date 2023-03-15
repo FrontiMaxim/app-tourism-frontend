@@ -5,6 +5,6 @@ export interface ClientModel {
     patronymic: string;
     phone: string;
     birthday: Date;
-    passportNumber: string;
-    passportSeries: string;
+    passportNumber: string | number;
+    passportSeries: string | number;
 }

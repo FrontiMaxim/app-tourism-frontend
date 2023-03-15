@@ -1,0 +1,10 @@
+<div class="alert_wrapper">
+    <div class="alert" [ngClass]="service.mode" *ngIf="service.isOpen">
+        <svg-icon 
+            [src]="service.mode === 'successfully' ? 'assets/successfully.svg' : 'assets/unsuccessfully.svg'" 
+            svgClass="icon"
+        />
+        <span>{{ service.message }}</span>
+    </div>
+</div>
+

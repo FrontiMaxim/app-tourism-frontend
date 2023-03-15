@@ -1,0 +1,47 @@
+@import '../../../styles/colors';
+
+
+.alert_wrapper {
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 100;
+
+    .alert {
+
+        display: flex;
+        align-items: center;
+
+        padding: 5px 100px 5px 10px ;
+
+        border-radius: 5px;
+
+        box-shadow: 0 0 4px 0 $dark;
+
+        span {
+            margin-left: 10px;
+            color: $white;
+        }
+
+        .icon {
+            fill: $white;
+        }
+    }
+}
+
+
+.successfully {
+    background-color: rgba($good, .8);   
+}
+
+.unsuccessfully {
+    background-color: rgba($error, .8);   
+}

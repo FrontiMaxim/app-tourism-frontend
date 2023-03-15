@@ -1,0 +1,16 @@
+@import '../../../styles/colors';
+
+.modal_window {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba($dark, .4);
+}

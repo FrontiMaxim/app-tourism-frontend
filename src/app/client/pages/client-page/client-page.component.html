@@ -1,0 +1,37 @@
+<div class="page">
+    <h2>Клиенты</h2>
+    <button (click)="
+        formClientService.titleForm = 'Добавление клиента';
+        formClientService.defaultData = formClientService.emptyClient;
+        openModalWindow()
+        "
+    >
+        Добавить клиента
+    </button>
+
+    <app-modal-window *ngIf="isOpenModalWindow">
+        <app-form-client 
+            (resetClick)="closeModalWindow()"
+        />
+    </app-modal-window>
+
+    <div class="list">
+        <div class="list_item" *ngFor="let client of clientService.listClient | async"> 
+            <app-card-client [data]="client" />
+            <div>
+                <button class="primary"
+                    (click)="
+                        formClientService.defaultData = client;
+                        formClientService.titleForm = 'Редактирование клиента';
+                        openModalWindow()
+                    "
+                >
+                    Редактировать
+                </button>
+                <button class="default" (click)="clientService.deleteClient(client.id!)">Удалить</button>
+            </div>
+        </div>
+    </div>
+
+    <app-alert />
+</div>

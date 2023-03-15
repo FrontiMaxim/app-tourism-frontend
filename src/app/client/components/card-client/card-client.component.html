@@ -1,0 +1,27 @@
+<div class="card">
+    <div> 
+        <span class="card_value">{{data.surname}}</span>
+        &nbsp;
+        <span class="card_value">{{data.name}}</span>
+        &nbsp;
+        <span class="card_value">{{data.patronymic}}</span>
+    </div>
+    <div>
+        <span class="card_param">Дата рождения:</span>
+        &nbsp;
+        <span class="card_value">{{data.birthday | date:"dd.MM.yyyy"}}</span>
+    </div>
+    <div>
+        <span class="card_param">Номер телефона:</span>
+        &nbsp;
+        <span class="card_value">{{data.phone}}</span>
+    </div>
+    <div>
+        <span class="card_param">Паспорт:</span>
+        &nbsp; 
+        <span class="card_value">{{data.passportNumber}}</span>
+        &nbsp;
+        <span class="card_value">{{data.passportSeries}}</span>
+    </div>
+</div>
+

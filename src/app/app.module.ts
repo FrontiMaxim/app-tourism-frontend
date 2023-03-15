@@ -2,29 +2,36 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AppRoutingModule } from './app-routing.module';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ListComponent } from 'src/shared/list/list.component';
-import { ListItemComponent } from 'src/shared/list-item/list-item.component';
 import { ContarctComponent } from './components/contarct/contarct.component';
-import { ClientModule } from './client/client.module';
+import { ModalWindowComponent } from './components/modal-window/modal-window.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CardClientComponent } from './client/components/card-client/card-client.component';
+import { FormClientComponent } from './client/components/form-client/form-client.component';
+import { ClientPageComponent } from './client/pages/client-page/client-page.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    ListComponent,
-    ListItemComponent,
     ContarctComponent,
+    ClientPageComponent,
+    ModalWindowComponent,
+    AlertComponent,
+    FormClientComponent,
+    CardClientComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
-    ClientModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

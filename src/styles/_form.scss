@@ -1,4 +1,5 @@
 @import './colors';
+@import './botton';
 
 @mixin primary {
     background-color: $primary;
@@ -14,6 +15,8 @@
 
     .form {
         display: inline-block;
+        
+        background-color: $white;
 
         padding: 20px;
 
@@ -81,25 +84,10 @@
             align-items: center;
 
             .form-button {
-                width: 140px;
-                height: 30px;
-                border-radius: 5px;
-                box-shadow: 0 0 4px 0 $dark;
-    
-                transition: all .2s;
-    
-                @include default;
-    
-                &:hover {
-                    @include primary;
-                }
+                @include button-default;
 
                 &.primary {
-                    @include primary;
-        
-                    &:hover {
-                        @include default;
-                    }
+                    @include button-primary;
                 }
             }
         }

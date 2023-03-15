@@ -1,5 +1,5 @@
-<form class="form" [formGroup]="form" >
-    <h2>{{ nameForm }}</h2>
+<form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <h2>{{ formClientService.titleForm }}</h2>
 
     <div class="form-group">
         <label class="form-group_label">Фамилия:</label>
@@ -67,8 +67,8 @@
     </div>
 
     <div class="form-group-button">
-        <button class="form-button primary" [disabled]="form.errors">Создать</button>
-        <button class="form-button" type="reset">Отменить</button>
+        <button class="form-button primary" [disabled]="form.invalid">Подтвердить</button>
+        <button class="form-button" type="reset" (click)="resetClick.emit()">Отменить</button>
     </div>
 </form>
 

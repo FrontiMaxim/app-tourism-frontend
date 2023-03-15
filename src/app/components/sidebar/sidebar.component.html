@@ -1,15 +1,15 @@
 <div class="sidebar" >
 
     <nav>
-        <app-list class="list">
-            <app-list-item *ngFor="let item of nav">
+        <div class="list">
+            <div class="list_item" *ngFor="let item of nav">
                 <a [routerLink]="item.link">
                     <div class="container_link">
                         <svg-icon [src]="item.icon" svgClass="icon" />
                         <span>{{ item.title }}</span>
                     </div>
                 </a>
-            </app-list-item>
-        </app-list>
+            </div>
+        </div>
     </nav>
 </div>
