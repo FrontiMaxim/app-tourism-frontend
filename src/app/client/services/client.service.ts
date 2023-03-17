@@ -22,7 +22,7 @@ export class ClientService {
         this.alertSerivce.isOpen = true;
       },
       complete: () => {
-        this.alertSerivce.message = 'Клиент добавлен';
+        this.alertSerivce.message = 'Информация о клиенте добавлена';
         this.alertSerivce.mode = 'successfully';
         this.alertSerivce.isOpen = true;
         this.getAllClient();
@@ -43,7 +43,7 @@ export class ClientService {
   deleteClient(id: number) {
     this.http.delete(this._PATH + `/${id}`).subscribe({
       complete: () => {
-        this.alertSerivce.message = 'Клиет удалён';
+        this.alertSerivce.message = 'Информация о клиенте удалёна';
         this.alertSerivce.mode = 'successfully';
         this.alertSerivce.isOpen = true;
 
@@ -61,7 +61,7 @@ export class ClientService {
 
     this.http.put(this._PATH, client).subscribe({
       complete: () => {
-        this.alertSerivce.message = 'Клиет обновлён';
+        this.alertSerivce.message = 'Информация о клиенте обновлёна';
         this.alertSerivce.mode = 'successfully';
         this.alertSerivce.isOpen = true;
 
