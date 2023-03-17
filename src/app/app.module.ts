@@ -12,6 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardClientComponent } from './client/components/card-client/card-client.component';
 import { FormClientComponent } from './client/components/form-client/form-client.component';
 import { ClientPageComponent } from './client/pages/client-page/client-page.component';
+import { FormHotelComponent } from './hotel/components/form-hotel/form-hotel.component';
+import { PageHotelComponent } from './hotel/pages/page-hotel/page-hotel.component';
+import { CardHotelComponent } from './hotel/components/card-hotel/card-hotel.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { ClientPageComponent } from './client/pages/client-page/client-page.comp
     ModalWindowComponent,
     AlertComponent,
     FormClientComponent,
-    CardClientComponent
+    CardClientComponent,
+    CardHotelComponent,
+    FormHotelComponent,
+    PageHotelComponent
   ],
   imports: [
     BrowserModule,

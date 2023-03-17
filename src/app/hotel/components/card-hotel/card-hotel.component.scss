@@ -1,0 +1,23 @@
+@import '../../../../styles/card';
+@import '../../../../styles/colors';
+
+.card {
+    @include card;
+
+    h2 {
+        color: $primary;
+    }
+
+    .wrapper_star {
+        display: inline-block;
+        margin-top: 3px;
+
+        &:not(:first-child) {
+            margin-left: 3px;
+        }
+    }
+
+    .icon {
+        fill: $yellow;
+    }
+}

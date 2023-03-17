@@ -1,0 +1,39 @@
+<div class="page">
+
+    <h2>Отели</h2>
+    <button (click)="
+        formHotelService.titleForm = 'Добавление отеля';
+        formHotelService.defaultData = formHotelService.emptyHotel;
+        modalWindowService.open()
+        "
+    >
+        Добавить отель
+    </button>
+
+    <app-modal-window *ngIf="modalWindowService.isOpen">
+        <app-form-hotel 
+            (resetClick)="modalWindowService.close()"
+        />
+    </app-modal-window>
+
+    <div class="list">
+        <div class="list_item" *ngFor="let hotel of hotelService.listHotel | async"> 
+            <app-card-hotel [data]="hotel" />
+            <div>
+                <button class="primary"
+                    (click)="
+                        formHotelService.defaultData = hotel;
+                        formHotelService.titleForm = 'Редактирование отеля';
+                        modalWindowService.open();
+                    "
+                >
+                    Редактировать
+                </button>
+                <button class="default" (click)="hotelService.delete(hotel.id!)">Удалить</button>
+            </div>
+        </div>
+    </div>
+
+    <app-alert />
+    
+</div>

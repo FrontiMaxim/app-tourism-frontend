@@ -1,0 +1,28 @@
+<div class="card">
+    <div> 
+        <h2 class="card_value">{{data.name}}</h2>
+    </div>
+    <div>
+        <span class="card_param">Страна:</span>
+        &nbsp;
+        <span class="card_value">{{data.country}}</span>
+        &nbsp;
+        <span class="card_param">Город:</span>
+        &nbsp;
+        <span class="card_value">{{data.city}}</span>
+        &nbsp;
+        <span class="card_param">Улица:</span>
+        &nbsp;
+        <span class="card_value">{{data.street}}</span>
+        &nbsp;
+        <span class="card_param">Дом:</span>
+        &nbsp;
+        <span class="card_value">{{data.home}}</span>
+    </div>
+    <div>
+        <div class="wrapper_star" *ngFor="let i of stars">
+            <svg-icon src="assets/star.svg" svgClass="icon" />
+        </div>
+    </div>
+</div>
+
