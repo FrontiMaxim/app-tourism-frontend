@@ -15,6 +15,9 @@ import { ClientPageComponent } from './client/pages/client-page/client-page.comp
 import { FormHotelComponent } from './hotel/components/form-hotel/form-hotel.component';
 import { PageHotelComponent } from './hotel/pages/page-hotel/page-hotel.component';
 import { CardHotelComponent } from './hotel/components/card-hotel/card-hotel.component';
+import { PagePermitComponent } from './permit/pages/page-permit/page-permit.component';
+import { FormPermitComponent } from './permit/components/form-permit/form-permit.component';
+import { CardPermitComponent } from './permit/components/card-permit/card-permit.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { CardHotelComponent } from './hotel/components/card-hotel/card-hotel.com
     CardClientComponent,
     CardHotelComponent,
     FormHotelComponent,
-    PageHotelComponent
+    PageHotelComponent,
+    PagePermitComponent,
+    FormPermitComponent,
+    CardPermitComponent
   ],
   imports: [
     BrowserModule,

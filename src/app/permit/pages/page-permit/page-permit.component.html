@@ -1,0 +1,21 @@
+ <div class="page">
+    <h2>Путёвки</h2>
+
+    <button (click)="
+        formPermitService.titleForm = 'Добавление путёвки';
+        formPermitService.defaultData = formPermitService.emptyPermit;
+        modalWindowService.open()
+        "
+    >
+        Добавить путёвку
+    </button>
+
+    <app-modal-window *ngIf="modalWindowService.isOpen">
+        <app-form-permit 
+            (resetClick)="modalWindowService.close()"
+        />
+    </app-modal-window>
+
+    <app-alert />
+ </div>
+ 
