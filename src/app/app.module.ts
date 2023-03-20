@@ -18,6 +18,9 @@ import { CardHotelComponent } from './hotel/components/card-hotel/card-hotel.com
 import { PagePermitComponent } from './permit/pages/page-permit/page-permit.component';
 import { FormPermitComponent } from './permit/components/form-permit/form-permit.component';
 import { CardPermitComponent } from './permit/components/card-permit/card-permit.component';
+import { PageDiscountComponent } from './discount/pages/page-discount/page-discount.component';
+import { FormDiscountComponent } from './discount/components/form-discount/form-discount.component';
+import { CardDiscountComponent } from './discount/components/card-discount/card-discount.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { CardPermitComponent } from './permit/components/card-permit/card-permit
     PageHotelComponent,
     PagePermitComponent,
     FormPermitComponent,
-    CardPermitComponent
+    CardPermitComponent,
+    PageDiscountComponent,
+    FormDiscountComponent,
+    CardDiscountComponent
   ],
   imports: [
     BrowserModule,

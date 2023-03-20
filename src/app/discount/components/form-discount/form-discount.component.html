@@ -1,0 +1,36 @@
+<form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <h2>{{ formDiscountService.titleForm }}</h2>
+
+    <div class="form-group">
+        <label class="form-group_label">Размер скидки:</label>
+        <input class="form-group_input" type="number" formControlName="size" />
+        <div class="form-group_error" *ngIf="size?.invalid && isSubmit">
+            <span *ngIf="size?.errors?.['required']">Поле обязательно для заполнения</span>
+            <span *ngIf="size?.errors?.['min']">Скидка не может быть отрицательной</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-group_label">Дата начала действия скидки:</label>
+        <input class="form-group_input" type="date" formControlName="timeStart"/>
+        <div class="form-group_error" *ngIf="timeStart?.invalid && isSubmit">
+            <span *ngIf="timeStart?.errors?.['required']">Поле обязательно для заполнения</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-group_label">Дата окончания действия путёвки:</label>
+        <input class="form-group_input" type="date" formControlName="timeFinish"/>
+        <div class="form-group_error" *ngIf="isSubmit">
+            <span *ngIf="timeFinish?.errors?.['required']">Поле обязательно для заполнения</span>
+            <span *ngIf="timeFinish?.value < timeStart?.value">
+                Конфликт с датой начала действия скидки
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group-button">
+        <button class="form-button primary">Подтвердить</button>
+        <button class="form-button" type="reset" (click)="modalWindowService.close()">Отменить</button>
+    </div>
+</form>

@@ -1,0 +1,45 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/botton';
+
+.page {
+    padding-top: 30px;
+    padding-left: 40px;
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    button {
+        @include button-primary;
+    }
+
+    .list {
+        margin-top: 20px;
+        width: 45vw;
+
+        .list_item {
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: 0 0 4px $dark;
+
+            border-radius: 5px;
+
+            padding: 10px;
+
+            &:not(:first-child) {
+                margin-top: 20px;
+            }
+        }
+    }
+
+    button.primary {
+        margin-right: 20px;
+    }
+
+    button.default {
+        @include button-default;
+    }
+}

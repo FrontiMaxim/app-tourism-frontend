@@ -1,0 +1,38 @@
+<div class="page">
+    <h2>Скидки</h2>
+
+    <button (click)="
+        formDiscountService.titleForm = 'Добавление скидки';
+        formDiscountService.defaultData = formDiscountService.emptyDiscount;
+        modalWindowService.open()
+        "
+    >
+        Добавить скидку
+    </button>
+
+    <app-modal-window *ngIf="modalWindowService.isOpen">
+        <app-form-discount 
+            (resetClick)="modalWindowService.close()"
+        />
+    </app-modal-window>
+
+    <div class="list">
+        <div class="list_item" *ngFor="let discount of discountService.listDiscount"> 
+            <app-card-discount [data]="discount" />
+            <div>
+                <button class="primary"
+                    (click)="
+                        formDiscountService.defaultData = discount;
+                        formDiscountService.titleForm = 'Редактирование скидки';
+                        modalWindowService.open();
+                    "
+                >
+                    Редактировать
+                </button>
+                <button class="default" (click)="discountService.delete(discount.id!)">Удалить</button>
+            </div>
+        </div>
+    </div>
+
+    <app-alert />
+ </div>

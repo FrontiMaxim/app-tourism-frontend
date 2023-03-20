@@ -24,6 +24,10 @@ export class DiscountService {
         this.alertSerivce.message = 'Такая скидка уже существует';
         this.alertSerivce.mode = 'unsuccessfully';
         this.alertSerivce.isOpen = true;
+
+        setTimeout(() => {
+          this.alertSerivce.isOpen = false;
+        }, 3000);
       },
       complete: () => {
         this.alertSerivce.message = 'Информация о скидке добавлена';
@@ -67,7 +71,7 @@ export class DiscountService {
 
     this.http.put(this._PATH, discount).subscribe({
       complete: () => {
-        this.alertSerivce.message = 'Информация о скдике обновлёна';
+        this.alertSerivce.message = 'Информация о скидке обновлёна';
         this.alertSerivce.mode = 'successfully';
         this.alertSerivce.isOpen = true;
 
