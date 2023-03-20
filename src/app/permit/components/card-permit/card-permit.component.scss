@@ -1,0 +1,20 @@
+@import '../../../../styles/card';
+@import '../../../../styles/colors';
+
+.card {
+    @include card;
+
+    hr {
+        margin: 8px 0;
+        border: none;
+
+        height: 2px;
+        background-color: $primary;
+
+        border-radius: 10px;
+    }
+
+    .container_permit {
+        font-size: 18px;
+    }
+}

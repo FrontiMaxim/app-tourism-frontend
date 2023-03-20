@@ -6,17 +6,15 @@
         <input class="form-group_input" list="hotels" formControlName="hotel">
         <datalist id="hotels">
             <option  
-                *ngFor="let hotel of hotelSerivce.listHotel | async"  
+                *ngFor="let hotel of hotelSerivce.listHotel"  
                 [value]="hotel.name"            
             >
         </datalist>
-       
-        
-        
-        <!-- <div class="form-group_error" *ngIf="street?.invalid && street?.touched">
-            <span *ngIf="street?.errors?.['required']">Поле обязательно для заполнения</span>
-        </div> -->
+        <div class="form-group_error" *ngIf="hotel?.invalid && hotel?.touched">
+            <span *ngIf="hotel?.errors?.['required']">Поле обязательно для заполнения</span>
+        </div>
     </div>
+
     <div class="form-group">
         <label class="form-group_label">Цена путёвки:</label>
         <input class="form-group_input" type="number" formControlName="price" />
@@ -24,6 +22,24 @@
             <span *ngIf="price?.errors?.['required']">Поле обязательно для заполнения</span>
             <span *ngIf="price?.errors?.['min']">Цена не может быть отрицательной</span>
         </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-group_label">Скидка:</label>
+        <select class="form-group_input" formControlName="discount" >
+            <option [ngValue]="null">Нет скидки</option>
+            <option  
+                *ngFor="let discount of discountService.listDiscount"  
+                [ngValue]="discount.id"            
+            >
+                {{ discount.size }}&#37;
+                &nbsp;
+                (
+                    {{ discount.timeStart | date:"dd.MM.yyyy"}} -
+                    {{ discount.timeFinish | date:"dd.MM.yyyy"}} 
+                )
+            </option>
+        </select>
     </div>
 
     <div class="form-group">
@@ -44,14 +60,6 @@
             </span>
         </div>
     </div>
-
-    <!-- <div class="form-group">
-        <label class="form-group_label">Дом:</label>
-        <input class="form-group_input" type="text" formControlName="home" />
-        <div class="form-group_error" *ngIf="home?.invalid && home?.touched">
-            <span *ngIf="home?.errors?.['required']">Поле обязательно для заполнения</span>
-        </div>
-    </div> -->
 
     <div class="form-group-button">
         <button class="form-button primary" [disabled]="form.invalid">Подтвердить</button>

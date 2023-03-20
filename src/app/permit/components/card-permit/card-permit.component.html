@@ -1,1 +1,27 @@
-<p>card-permit works!</p>
+<div class="card">
+    <app-card-hotel [data]="data.hotel"/>
+    <hr/>
+    <div class="container_permit">
+        <div>
+            <span class="card_param">Цена:</span>
+            &nbsp;
+            <span class="card_value" *ngIf="data.discount">
+                <s>{{data.price}}&#8381;</s>
+                {{data.price * ((100 - data.discount.size) / 100)}}&#8381;
+                
+                (скидка {{data.discount.size}}&#37;)
+            </span>
+            
+            <span class="card_value" *ngIf="!data.discount">{{data.price}} &#8381;</span>
+        </div>
+        <div>
+            <span class="card_param">Даты:</span>
+            &nbsp;
+            <span class="card_value">
+                {{data.timeStart | date:"dd.MM.yyyy"}}
+                -
+                {{data.timeFinish | date:"dd.MM.yyyy"}}
+            </span>
+        </div>
+    </div>
+</div>

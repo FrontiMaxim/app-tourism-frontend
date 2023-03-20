@@ -16,6 +16,24 @@
         />
     </app-modal-window>
 
+    <div class="list">
+        <div class="list_item" *ngFor="let permit of permitService.listPermit | async"> 
+            <app-card-permit [data]="permit" />
+            <div>
+                <button class="primary"
+                    (click)="
+                        formPermitService.defaultData = permit;
+                        formPermitService.titleForm = 'Редактирование путёвки';
+                        modalWindowService.open();
+                    "
+                >
+                    Редактировать
+                </button>
+                <button class="default" (click)="permitService.delete(permit.id!)">Удалить</button>
+            </div>
+        </div>
+    </div>
+
     <app-alert />
  </div>
  

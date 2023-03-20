@@ -4,8 +4,9 @@ import { FormPermitService } from './form-permit.service';
 import { ModalWindowService } from 'src/app/components/modal-window/modal-window.service';
 import { PermitService } from '../../service/permit.service';
 import { HotelService } from 'src/app/hotel/services/hotel.service';
-import { Observable } from 'rxjs';
+import { Observable, of, subscribeOn } from 'rxjs';
 import { HotelModel } from 'src/app/hotel/models/hotel.model';
+import { DiscountService } from 'src/app/discount/services/discount.service';
 
 
 @Component({
@@ -22,12 +23,14 @@ export class FormPermitComponent {
     public formPermitService: FormPermitService,
     public modalWindowService: ModalWindowService,
     public hotelSerivce: HotelService,
-    private permitService: PermitService
+    private permitService: PermitService,
+    public discountService: DiscountService
   ) {}
 
   ngOnInit(): void {
 
     this.hotelSerivce.getAll();
+    this.discountService.getAll();
 
     this.form = this.formBuilder.group(
       
@@ -45,11 +48,11 @@ export class FormPermitComponent {
           [Validators.required]
         ),
         hotel: new FormControl(
-          '', 
+          this.formPermitService.defaultData.hotel.name, 
           [Validators.required]
         ),
         discount: new FormControl(
-          this.formPermitService.defaultData.discount, 
+          this.formPermitService.defaultData.discount ? this.formPermitService.defaultData.discount.id : null, 
         )
       }
     );
@@ -62,13 +65,6 @@ export class FormPermitComponent {
   get discount() { return this.form.get('discount'); }
 
   submit() {
-    this.formPermitService.selectHotel(this.hotel?.value, this.form);
-    console.log(this.form.value)
-    this.permitService.save(this.form.value);
-    // if(this.formPermitService.titleForm === 'Добавление отеля') {
-    //   this.hotelService.save(this.form.value);
-    // } else {
-    //   this.hotelService.update(this.form.value, this.formPermitService.defaultData.id!);
-    // }
+    this.formPermitService.send(this.form);
   }
 }
