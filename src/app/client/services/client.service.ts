@@ -12,7 +12,7 @@ export class ClientService {
   constructor(private http: HttpClient,  private alertSerivce: AlertService) { }
 
   private _PATH = 'api/client';
-  private _listClient$: Observable<ClientModel[]>;
+  private _listClient: ClientModel[];
   
   saveClient(client: ClientModel, resetClick: EventEmitter<any>) {
     this.http.post<HttpResponse<any>>(this._PATH, client).subscribe({
@@ -37,7 +37,9 @@ export class ClientService {
   }
 
   getAllClient() {
-    this._listClient$ = this.http.get<ClientModel[]>(this._PATH);
+    this.http.get<ClientModel[]>(this._PATH).subscribe(list => {
+      this._listClient = [...list];
+    });
   }
 
   deleteClient(id: number) {
@@ -75,6 +77,6 @@ export class ClientService {
   }
 
   get listClient() {
-    return this._listClient$;
+    return this._listClient;
   }
 }

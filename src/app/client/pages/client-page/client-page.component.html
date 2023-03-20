@@ -16,7 +16,7 @@
     </app-modal-window>
 
     <div class="list">
-        <div class="list_item" *ngFor="let client of clientService.listClient | async"> 
+        <div class="list_item" *ngFor="let client of clientService.listClient"> 
             <app-card-client [data]="client" />
             <div>
                 <button class="primary"

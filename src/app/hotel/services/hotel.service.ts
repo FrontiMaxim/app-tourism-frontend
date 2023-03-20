@@ -1,6 +1,5 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AlertService } from 'src/app/components/alert/alert.service';
 import { HotelModel } from '../models/hotel.model';
 import { ModalWindowService } from 'src/app/components/modal-window/modal-window.service';
@@ -17,7 +16,7 @@ export class HotelService {
   ) { }
 
   private _PATH = 'api/hotel';
-  private _listHotel$: Observable<HotelModel[]>;
+  private _listHotel: HotelModel[];
   
   save(hotel: HotelModel) {
     this.http.post<HttpResponse<any>>(this._PATH, hotel).subscribe({
@@ -42,7 +41,9 @@ export class HotelService {
   }
 
   getAll() {
-    this._listHotel$ = this.http.get<HotelModel[]>(this._PATH);
+    this.http.get<HotelModel[]>(this._PATH).subscribe(list => {
+      this._listHotel = [...list];
+    });
   }
 
   delete(id: number) {
@@ -80,6 +81,6 @@ export class HotelService {
   }
 
   get listHotel() {
-    return this._listHotel$;
+    return this._listHotel;
   }
 }

@@ -17,7 +17,7 @@
     </app-modal-window>
 
     <div class="list">
-        <div class="list_item" *ngFor="let hotel of hotelService.listHotel | async"> 
+        <div class="list_item" *ngFor="let hotel of hotelService.listHotel"> 
             <app-card-hotel [data]="hotel" />
             <div>
                 <button class="primary"
