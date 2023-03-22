@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { ContarctComponent } from './components/contarct/contarct.component';
 import { ModalWindowComponent } from './components/modal-window/modal-window.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,13 +21,14 @@ import { PageDiscountComponent } from './discount/pages/page-discount/page-disco
 import { FormDiscountComponent } from './discount/components/form-discount/form-discount.component';
 import { CardDiscountComponent } from './discount/components/card-discount/card-discount.component';
 import { FilterListPipe } from './pipes/filter-list.pipe';
+import { PageContractComponent } from './contract/pages/page-contract/page-contract.component';
+import { FormContractComponent } from './contract/components/form-contract/form-contract.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    ContarctComponent,
     ClientPageComponent,
     ModalWindowComponent,
     AlertComponent,
@@ -43,7 +43,9 @@ import { FilterListPipe } from './pipes/filter-list.pipe';
     PageDiscountComponent,
     FormDiscountComponent,
     CardDiscountComponent,
-    FilterListPipe
+    FilterListPipe,
+    PageContractComponent,
+    FormContractComponent
   ],
   imports: [
     BrowserModule,

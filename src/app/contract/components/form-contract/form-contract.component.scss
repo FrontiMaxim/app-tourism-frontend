@@ -1,0 +1,101 @@
+@import '../../../../styles/form';
+@import '../../../../styles/colors';
+
+
+@include form;
+
+.form {
+
+       display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 70vh;
+    width: 70vw;
+
+    h1 {
+        color: $primary;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+
+        margin-bottom: 10px;
+
+        color: $dark;
+    }
+
+    .wrapper_content {
+
+        display: grid;
+        grid-template-areas: 
+            "client permits"
+            "permit permits";
+    
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    
+    
+        .client {
+            grid-area: client;
+        }
+    
+        .permit {
+            margin-top: -50px;
+            grid-area: permit;
+
+            .wrapper_permit {
+                width: 95%;
+            }
+
+            .form-group_error {
+        
+                span {
+                    color: $error;
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+            }
+        }
+    
+        .permits {
+            border-left: 2px solid $dark;
+            grid-area: permits;
+        }
+    }
+
+    .list {
+
+        height: 50vh;
+        overflow: scroll;
+        overflow-x: hidden;
+
+        .list_item {
+
+            label {
+                cursor: pointer;
+            }
+
+            position: relative;
+
+            transform: scale(.8);
+
+            transition: all .2s;
+
+            &:hover {
+                background-color: rgba($primary, .4);
+            }
+
+            input {
+                position: absolute;
+                opacity: 0;
+            }
+        }
+    }
+
+    button {
+        width: 250px;
+        font-size: 20px;
+    }
+}

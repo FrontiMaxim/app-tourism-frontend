@@ -1,0 +1,35 @@
+<div class="page">
+    <div class="clients">
+        <div class="list">
+            <div class="list_item" 
+                *ngFor="let client of clientService.listClient"
+                (click)="contractService.getAll(client.id!)"
+            > 
+            <app-card-client [data]="client" />
+            <div>
+                <button class="primary"
+                    (click)="
+                        contractService.currentClient = client;
+                        modalWindowService.open();
+                    "
+                >
+                    Заключить договор
+                </button>
+            </div>
+        </div> 
+    </div>
+
+    <app-modal-window *ngIf="modalWindowService.isOpen">
+        <app-form-contract 
+            (resetClick)="modalWindowService.close()"
+        />
+    </app-modal-window>
+
+    <div class="contarcts">
+        <div class="list">
+            <div class="list_item" *ngFor="let contract of contractService.listContract"> 
+                
+            </div>
+        </div>
+    </div>
+</div>
