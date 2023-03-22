@@ -12,7 +12,7 @@ export class FormClientService {
     name: '',
     surname: '',
     patronymic: '',
-    birthday: new Date(''),
+    birthday: new Date(),
     phone: '',
     passportSeries: '',
     passportNumber: ''

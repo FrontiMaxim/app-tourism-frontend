@@ -3,22 +3,33 @@
 
     <div class="form-group">
         <label class="form-group_label">Отель:</label>
-        <input class="form-group_input" list="hotels" formControlName="hotel">
-        <datalist id="hotels">
+        <select 
+            class="form-group_input" 
+            [ngClass]="{'isSubmit': isSubmit}"
+            list="hotels" 
+            formControlName="hotel"
+        >
             <option  
                 *ngFor="let hotel of hotelSerivce.listHotel"  
                 [value]="hotel.name"            
             >
-        </datalist>
-        <div class="form-group_error" *ngIf="hotel?.invalid && hotel?.touched">
+                {{hotel.name}}
+            </option>
+        </select>
+        <div class="form-group_error" *ngIf="hotel?.invalid && isSubmit">
             <span *ngIf="hotel?.errors?.['required']">Поле обязательно для заполнения</span>
         </div>
     </div>
 
     <div class="form-group">
         <label class="form-group_label">Цена путёвки:</label>
-        <input class="form-group_input" type="number" formControlName="price" />
-        <div class="form-group_error" *ngIf="price?.invalid && price?.touched">
+        <input 
+            class="form-group_input" 
+            [ngClass]="{'isSubmit': isSubmit}"
+            type="number" 
+            formControlName="price" 
+        />
+        <div class="form-group_error" *ngIf="price?.invalid && isSubmit">
             <span *ngIf="price?.errors?.['required']">Поле обязательно для заполнения</span>
             <span *ngIf="price?.errors?.['min']">Цена не может быть отрицательной</span>
         </div>
@@ -26,16 +37,20 @@
 
     <div class="form-group">
         <label class="form-group_label">Скидка:</label>
-        <select class="form-group_input" formControlName="discount" >
+        <select 
+            class="form-group_input" 
+            [ngClass]="{'isSubmit': isSubmit}"
+            formControlName="discount" 
+        >
             <option [ngValue]="null">Нет скидки</option>
             <option  
-                *ngFor="let discount of discountService.listDiscount"  
+                *ngFor="let discount of (discountService.listDiscount | filterList: dateNow)"  
                 [ngValue]="discount.id"            
             >
                 {{ discount.size }}&#37;
                 &nbsp;
                 (
-                    {{ discount.timeStart | date:"dd.MM.yyyy"}} -
+                    до
                     {{ discount.timeFinish | date:"dd.MM.yyyy"}} 
                 )
             </option>
@@ -44,25 +59,43 @@
 
     <div class="form-group">
         <label class="form-group_label">Дата начала действия путёвки:</label>
-        <input class="form-group_input" type="date" formControlName="timeStart"/>
-        <div class="form-group_error" *ngIf="timeStart?.invalid && timeStart?.touched">
+        <input 
+            class="form-group_input" 
+            [ngClass]="{
+                'isSubmit': isSubmit, 
+                'ng-invalid': timeStart?.errors?.['required'] 
+            }"
+            type="date" 
+            formControlName="timeStart"
+        />
+        <div class="form-group_error" *ngIf="timeStart?.invalid && isSubmit">
             <span *ngIf="timeStart?.errors?.['required']">Поле обязательно для заполнения</span>
         </div>
     </div>
 
     <div class="form-group">
         <label class="form-group_label">Дата окончания действия путёвки:</label>
-        <input class="form-group_input" type="date" formControlName="timeFinish"/>
-        <div class="form-group_error" *ngIf="timeFinish?.touched">
+        <input 
+            class="form-group_input" 
+            [ngClass]="{
+                'isSubmit': isSubmit, 
+                'ng-invalid': timeFinish?.errors?.['required'] || form.errors?.['dateFinishLessDateStart']
+            }"
+            type="date" 
+            formControlName="timeFinish"
+        />
+        <div class="form-group_error" 
+            *ngIf="(timeFinish?.invalid || form.errors?.['dateFinishLessDateStart']) && isSubmit"
+        >
             <span *ngIf="timeFinish?.errors?.['required']">Поле обязательно для заполнения</span>
-            <span *ngIf="timeFinish?.value < timeStart?.value">
+            <span *ngIf="form.errors?.['dateFinishLessDateStart'] && !timeFinish?.errors?.['required']">
                 Конфликт с датой начала действия путёвки
             </span>
         </div>
     </div>
 
     <div class="form-group-button">
-        <button class="form-button primary" [disabled]="form.invalid">Подтвердить</button>
+        <button class="form-button primary">Подтвердить</button>
         <button class="form-button" type="reset" (click)="modalWindowService.close()">Отменить</button>
     </div>
 </form>

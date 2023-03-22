@@ -5,7 +5,6 @@ import { HotelService } from 'src/app/hotel/services/hotel.service';
 import { FormGroup } from '@angular/forms';
 import { DiscountModel } from 'src/app/discount/models/discount.model';
 import { DiscountService } from 'src/app/discount/services/discount.service';
-import { Observable, Subscription, subscribeOn } from 'rxjs';
 import { PermitService } from '../../service/permit.service';
 
 @Injectable({

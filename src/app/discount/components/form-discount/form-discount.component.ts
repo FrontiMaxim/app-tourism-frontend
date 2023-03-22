@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ModalWindowService } from 'src/app/components/modal-window/modal-window.service';
 import { DiscountService } from '../../services/discount.service';
 import { FormDiscountService } from './form-discount.service';
+import { DateValidatorService } from 'src/app/validators/date-validator.service';
 
 @Component({
   selector: 'app-form-discount',
@@ -17,7 +18,8 @@ export class FormDiscountComponent {
     private formBuilder: FormBuilder,
     public modalWindowService: ModalWindowService,
     public discountService: DiscountService,
-    public formDiscountService: FormDiscountService
+    public formDiscountService: FormDiscountService,
+    private dateValidatorSerivce: DateValidatorService
   ) {}
 
   ngOnInit(): void {
@@ -27,20 +29,15 @@ export class FormDiscountComponent {
           this.formDiscountService.defaultData.size, 
           [Validators.required, Validators.min(0)]
         ),
-        timeStart: new FormControl(
-          this.formDiscountService.defaultData.timeStart, 
-          [Validators.required]
-        ),
         timeFinish: new FormControl(
           this.formDiscountService.defaultData.timeFinish, 
-          [Validators.required]
+          [this.dateValidatorSerivce.required(), this.dateValidatorSerivce.moreOrEqualNow()]
         )
       }
     );
   }
 
   get size() { return this.form.get('size'); }
-  get timeStart() { return this.form.get('timeStart'); }
   get timeFinish() { return this.form.get('timeFinish'); }
  
   submit() {

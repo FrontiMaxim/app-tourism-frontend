@@ -21,6 +21,7 @@ import { CardPermitComponent } from './permit/components/card-permit/card-permit
 import { PageDiscountComponent } from './discount/pages/page-discount/page-discount.component';
 import { FormDiscountComponent } from './discount/components/form-discount/form-discount.component';
 import { CardDiscountComponent } from './discount/components/card-discount/card-discount.component';
+import { FilterListPipe } from './pipes/filter-list.pipe';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CardDiscountComponent } from './discount/components/card-discount/card-
     CardPermitComponent,
     PageDiscountComponent,
     FormDiscountComponent,
-    CardDiscountComponent
+    CardDiscountComponent,
+    FilterListPipe
   ],
   imports: [
     BrowserModule,

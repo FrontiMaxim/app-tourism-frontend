@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormHotelService } from './form-hotel.service';
 import { ModalWindowService } from 'src/app/components/modal-window/modal-window.service';
@@ -12,6 +12,7 @@ import { HotelService } from '../../services/hotel.service';
 export class FormHotelComponent {
 
   form : FormGroup;
+  isSubmit = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -59,10 +60,14 @@ export class FormHotelComponent {
 
 
   submit() {
-    if(this.formHotelService.titleForm === 'Добавление отеля') {
-      this.hotelService.save(this.form.value);
-    } else {
-      this.hotelService.update(this.form.value, this.formHotelService.defaultData.id!);
+    this.isSubmit = true;
+
+    if(!this.form.invalid) {
+      if(this.formHotelService.titleForm === 'Добавление отеля') {
+        this.hotelService.save(this.form.value);
+      } else {
+        this.hotelService.update(this.form.value, this.formHotelService.defaultData.id!);
+      }
     }
   }
 }

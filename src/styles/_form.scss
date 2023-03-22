@@ -42,6 +42,10 @@
                 display: block;
             }
     
+            select {
+                width: 309px !important;
+            }
+
             .form-group_input {
     
                 width: 300px;
@@ -56,7 +60,7 @@
                 border: none;
                 outline: none;  
 
-                &.ng-invalid.ng-touched{ 
+                &.isSubmit.ng-invalid{ 
                     border: 2px solid $error;
                     box-shadow: 0 0 4px 0 $error;
                 }

@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormPermitService } from './form-permit.service';
 import { ModalWindowService } from 'src/app/components/modal-window/modal-window.service';
-import { PermitService } from '../../service/permit.service';
 import { HotelService } from 'src/app/hotel/services/hotel.service';
-import { Observable, of, subscribeOn } from 'rxjs';
-import { HotelModel } from 'src/app/hotel/models/hotel.model';
 import { DiscountService } from 'src/app/discount/services/discount.service';
+import { DateValidatorService } from 'src/app/validators/date-validator.service';
 
 
 @Component({
@@ -17,14 +15,16 @@ import { DiscountService } from 'src/app/discount/services/discount.service';
 export class FormPermitComponent {
 
   form : FormGroup;
+  isSubmit = false;
+  dateNow = Date.now();
   
   constructor(
     private formBuilder: FormBuilder,
     public formPermitService: FormPermitService,
     public modalWindowService: ModalWindowService,
     public hotelSerivce: HotelService,
-    private permitService: PermitService,
-    public discountService: DiscountService
+    public discountService: DiscountService,
+    private dateValidatorSerivce: DateValidatorService
   ) {}
 
   ngOnInit(): void {
@@ -41,11 +41,11 @@ export class FormPermitComponent {
         ),
         timeStart: new FormControl(
           this.formPermitService.defaultData.timeStart, 
-          [Validators.required]
+          [this.dateValidatorSerivce.required()]
         ),
         timeFinish: new FormControl(
           this.formPermitService.defaultData.timeFinish, 
-          [Validators.required]
+          [this.dateValidatorSerivce.required()]
         ),
         hotel: new FormControl(
           this.formPermitService.defaultData.hotel.name, 
@@ -54,6 +54,9 @@ export class FormPermitComponent {
         discount: new FormControl(
           this.formPermitService.defaultData.discount ? this.formPermitService.defaultData.discount.id : null, 
         )
+      },
+      {
+        validators: [this.dateValidatorSerivce.startLessFinishValidator()]
       }
     );
   }
@@ -65,6 +68,11 @@ export class FormPermitComponent {
   get discount() { return this.form.get('discount'); }
 
   submit() {
-    this.formPermitService.send(this.form);
+    this.isSubmit = true;
+    console.log(this.form.value);
+
+    if(!this.form.invalid) {
+      this.formPermitService.send(this.form);
+    }
   }
 }

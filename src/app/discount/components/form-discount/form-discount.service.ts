@@ -9,7 +9,6 @@ export class FormDiscountService {
   constructor() {}
 
   emptyDiscount: DiscountModel = {
-    timeStart: new Date(''),
     timeFinish: new Date(''),
     size: 0
   };

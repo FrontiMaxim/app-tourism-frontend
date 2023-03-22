@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClientService } from '../../services/client.service';
 import { FormClientService } from './form-client.service';
+import { DateValidatorService } from 'src/app/validators/date-validator.service';
 
 @Component({
   selector: 'app-form-client',
@@ -13,11 +14,14 @@ export class FormClientComponent implements OnInit {
   @Output() resetClick = new EventEmitter();
   
   form : FormGroup;
+  isSubmit = false;
+  private _date = new Date();
 
   constructor(
       private formBuilder: FormBuilder, 
       public clientService: ClientService,
-      public formClientService: FormClientService
+      public formClientService: FormClientService,
+      private dateValidatorSerivce: DateValidatorService
     ) {}
 
   ngOnInit(): void {
@@ -39,8 +43,8 @@ export class FormClientComponent implements OnInit {
         [Validators.pattern('^(\\+7)|(8)[0-9]{10}'), Validators.required]
       ),
       birthday: new FormControl(
-        this.formClientService.defaultData.birthday, 
-        [Validators.required]
+        `${this._date.getFullYear}-${this._date.getMonth}-${this._date.getDay}`, 
+        [this.dateValidatorSerivce.required()]
       ),
       passportSeries: new FormControl(
         this.formClientService.defaultData.passportSeries, 
@@ -63,10 +67,14 @@ export class FormClientComponent implements OnInit {
 
 
   submit() {
-    if(this.formClientService.titleForm === 'Добавление клиента') {
-      this.clientService.saveClient(this.form.value, this.resetClick);
-    } else {
-      this.clientService.updateClient(this.form.value, this.formClientService.defaultData.id!, this.resetClick);
+    this.isSubmit = true;
+
+    if(!this.form.invalid) {
+      if(this.formClientService.titleForm === 'Добавление клиента') {
+        this.clientService.saveClient(this.form.value, this.resetClick);
+      } else {
+        this.clientService.updateClient(this.form.value, this.formClientService.defaultData.id!, this.resetClick);
+      }
     }
   }
 }

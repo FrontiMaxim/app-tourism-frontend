@@ -3,32 +3,52 @@
 
     <div class="form-group">
         <label class="form-group_label">Фамилия:</label>
-        <input class="form-group_input" type="text" formControlName="surname" />
-        <div class="form-group_error" *ngIf="surname?.invalid && surname?.touched">
+        <input 
+            class="form-group_input" 
+            [ngClass]="{'isSubmit': isSubmit}"
+            type="text" 
+            formControlName="surname" 
+        />
+        <div class="form-group_error" *ngIf="surname?.invalid && isSubmit">
             <span *ngIf="surname?.errors?.['required']">Поле обязательно для заполнения</span>
         </div>
     </div>
 
     <div class="form-group">
         <label class="form-group_label">Имя:</label>
-        <input class="form-group_input" type="text" formControlName="name"/>
-        <div class="form-group_error" *ngIf="name?.invalid && name?.touched">
+        <input 
+            class="form-group_input" 
+            [ngClass]="{'isSubmit': isSubmit}"
+            type="text" 
+            formControlName="name"
+        />
+        <div class="form-group_error" *ngIf="name?.invalid && isSubmit">
             <span *ngIf="name?.errors?.['required']">Поле обязательно для заполнения</span>
         </div>
     </div>
 
     <div class="form-group">
         <label class="form-group_label">Отчество:</label>
-        <input class="form-group_input" type="text" formControlName="patronymic"/>
-        <div class="form-group_error" *ngIf="patronymic?.invalid && patronymic?.touched">
+        <input 
+            class="form-group_input" 
+            [ngClass]="{'isSubmit': isSubmit}"
+            type="text" 
+            formControlName="patronymic"
+        />
+        <div class="form-group_error" *ngIf="patronymic?.invalid && isSubmit">
             <span *ngIf="patronymic?.errors?.['required']">Поле обязательно для заполнения</span>
         </div>
     </div>
 
     <div class="form-group">
         <label class="form-group_label">Номер телефона:</label>
-        <input class="form-group_input" type="tel" formControlName="phone" />
-        <div class="form-group_error" *ngIf="phone?.invalid && phone?.touched">
+        <input 
+            class="form-group_input" 
+            [ngClass]="{'isSubmit': isSubmit}"
+            type="tel" 
+            formControlName="phone" 
+        />
+        <div class="form-group_error" *ngIf="phone?.invalid && isSubmit">
             <span *ngIf="phone?.errors?.['required']">Поле обязательно для заполнения</span>
             <span *ngIf="phone?.errors?.['pattern']">
                 Некорректно введён номер телефона
@@ -38,16 +58,26 @@
 
     <div class="form-group">
         <label class="form-group_label">Дата рождения:</label>
-        <input class="form-group_input" type="date" formControlName="birthday" />
-        <div class="form-group_error" *ngIf="birthday?.invalid && birthday?.touched">
+        <input 
+            class="form-group_input" 
+            [ngClass]="{'isSubmit': isSubmit, 'ng-invalid': birthday?.errors?.['required']}"
+            type="date" 
+            formControlName="birthday" 
+        />
+        <div class="form-group_error" *ngIf="birthday?.invalid && isSubmit">
             <span *ngIf="birthday?.errors?.['required']">Поле обязательно для заполнения</span>
         </div>
     </div>
 
     <div class="form-group">
         <label class="form-group_label">Серия паспорта:</label>
-        <input class="form-group_input" type="number" formControlName="passportSeries" />
-        <div class="form-group_error" *ngIf="passportSeries?.invalid && passportSeries?.touched">
+        <input 
+            class="form-group_input" 
+            [ngClass]="{'isSubmit': isSubmit}"
+            type="number" 
+            formControlName="passportSeries" 
+        />
+        <div class="form-group_error" *ngIf="passportSeries?.invalid && isSubmit">
             <span *ngIf="passportSeries?.errors?.['required']">Поле обязательно для заполнения</span>
             <span *ngIf="passportSeries?.errors?.['min'] || passportSeries?.errors?.['max']">
                 Некорректно введёна серия паспорта
@@ -57,8 +87,13 @@
 
     <div class="form-group">
         <label class="form-group_label">Номер паспорта:</label>
-        <input class="form-group_input" type="number" formControlName="passportNumber" />
-        <div class="form-group_error" *ngIf="passportNumber?.invalid && passportNumber?.touched">
+        <input 
+            class="form-group_input"
+            [ngClass]="{'isSubmit': isSubmit}"
+            type="number" 
+            formControlName="passportNumber" 
+        />
+        <div class="form-group_error" *ngIf="passportNumber?.invalid && isSubmit">
             <span *ngIf="passportNumber?.errors?.['required']">Поле обязательно для заполнения</span>
             <span *ngIf="passportNumber?.errors?.['min'] || passportNumber?.errors?.['max']">
                 Некорректно введён номер паспорта
@@ -67,7 +102,7 @@
     </div>
 
     <div class="form-group-button">
-        <button class="form-button primary" [disabled]="form.invalid">Подтвердить</button>
+        <button class="form-button primary">Подтвердить</button>
         <button class="form-button" type="reset" (click)="resetClick.emit()">Отменить</button>
     </div>
 </form>
