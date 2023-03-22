@@ -17,7 +17,7 @@ export class PermitService {
   ) { }
 
   private _PATH = 'api/permit';
-  private _listPermit$: Observable<PermitModel[]>;
+  private _listPermit: PermitModel[];
 
   save(permit: PermitModel) {
     this.http.post<HttpResponse<any>>(this._PATH, permit).subscribe({
@@ -46,7 +46,7 @@ export class PermitService {
   }
 
   getAll() {
-    this._listPermit$ = this.http.get<PermitModel[]>(this._PATH);
+    this.http.get<PermitModel[]>(this._PATH).subscribe(list => this._listPermit = [...list]);
   }
 
   delete(id: number) {
@@ -84,6 +84,6 @@ export class PermitService {
   }
 
   get listPermit() {
-    return this._listPermit$;
+    return this._listPermit;
   }
 }

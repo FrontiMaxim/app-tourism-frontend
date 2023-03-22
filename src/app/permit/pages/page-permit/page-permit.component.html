@@ -17,7 +17,7 @@
     </app-modal-window>
 
     <div class="list">
-        <div class="list_item" *ngFor="let permit of permitService.listPermit | async"> 
+        <div class="list_item" *ngFor="let permit of permitService.listPermit"> 
             <app-card-permit [data]="permit" />
             <div>
                 <button class="primary"
