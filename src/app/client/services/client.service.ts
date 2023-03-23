@@ -2,7 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { AlertService } from 'src/app/components/alert/alert.service';
 import { ClientModel } from '../models/client.model';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +36,8 @@ export class ClientService {
     })
   }
 
-  getAllClient() {
-    this.http.get<ClientModel[]>(this._PATH).subscribe(list => {
+  getAllClient(): Subscription {
+    return this.http.get<ClientModel[]>(this._PATH).subscribe(list => {
       this._listClient = [...list];
     });
   }
