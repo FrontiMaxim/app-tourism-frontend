@@ -5,7 +5,16 @@
 
     display: grid;
     grid-template-areas: "clients contracts";
-    grid-template-columns: 20vw 1fr;
+    grid-template-columns: 30vw 1fr;
+    justify-items: center;
+
+    padding: 30px 100px 0 100px;
+
+    h2 {
+        color: $primary;
+        margin-bottom: 20px;
+        text-align: center;
+    }
 
 
     .clients {
@@ -13,25 +22,46 @@
         grid-area: clients;
 
         .list_item {
+            cursor: pointer;
 
-            box-shadow: 0 0 4px $dark;
-
-            border-radius: 5px;
-
-            padding: 10px;
-
-            &:not(:first-child) {
-                margin-top: 20px;
+            &:hover {
+                background-color: rgba($primary, .4);
             }
         }
+
+        .selected {
+            background-color: rgba($primary, .4);
+        }
+        
     }
 
     .contracts {
         grid-area: contracts;
+
+        .list {
+            width: 100%;
+        }
+
+    }
+
+
+    .list_item {
+
+        box-shadow: 0 0 4px $dark;
+
+        border-radius: 5px;
+
+        padding: 10px;
+
+        &:not(:first-child) {
+            margin-top: 20px;
+        }
     }
 
     button {
         @include button-primary;
+        display: block;
+        margin: 0 auto;
     }
 
     button.primary {
