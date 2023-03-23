@@ -30,6 +30,8 @@ export class FormContractComponent {
         [Validators.required]
       )
     })
+
+    this.contractService.currentPermit = null
   }
 
   get permit() { return this.form.get('permit'); }
@@ -37,12 +39,13 @@ export class FormContractComponent {
   submit() {
     this.isSubmit = true;
     
-    if(!this.form.invalid) {
+    if(!this.form.invalid && this.contractService.currentPermit) {
 
       const country = this.contractService.currentPermit.hotel.country;
       const city = this.contractService.currentPermit.hotel.city;
       const street = this.contractService.currentPermit.hotel.street;
       const home = this.contractService.currentPermit.hotel.home;
+      const discount = this.contractService.currentPermit.discount;
 
       const date = new Date();
 
@@ -53,12 +56,11 @@ export class FormContractComponent {
         pricePermit: this.contractService.currentPermit.price,
         timeStart: this.contractService.currentPermit.timeStart,
         timeFinish: this.contractService.currentPermit.timeFinish,
-        sizeDiscount: this.contractService.currentPermit.discount?.size!,
+        sizeDiscount:  discount ? discount.size : 0,
         dateConclusion: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}` ,
         client: this.contractService.currentClient
       }
 
-      console.log(contarct)
       this.contractService.save(contarct);
     }
   }

@@ -40,7 +40,7 @@ export class FormClientComponent implements OnInit {
       ),
       phone: new FormControl(
         this.formClientService.defaultData.phone, 
-        [Validators.pattern('^(\\+7)|(8)[0-9]{10}'), Validators.required]
+        [Validators.pattern('^(\\+7|8)([0-9]{10})'), Validators.required]
       ),
       birthday: new FormControl(
         `${this._date.getFullYear}-${this._date.getMonth}-${this._date.getDay}`, 

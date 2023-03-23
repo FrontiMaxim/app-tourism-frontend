@@ -8,7 +8,7 @@ import { INavItem } from './interfaces/navItem.interface';
 })
 export class SidebarComponent {
   nav: INavItem[] = [
-    { icon: 'assets/cotract.svg', title: 'Заключение договора', link: ''},
+    { icon: 'assets/cotract.svg', title: 'Договоры', link: ''},
     { icon: 'assets/client.svg', title: 'Клиенты', link: 'clients'},
     { icon: 'assets/hotel.svg', title: 'Отели', link: 'hotels'},
     { icon: 'assets/permit.svg', title: 'Путёвки', link: 'permits'},

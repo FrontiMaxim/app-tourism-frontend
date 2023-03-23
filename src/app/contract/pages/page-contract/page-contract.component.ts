@@ -16,6 +16,10 @@ export class PageContractComponent  {
   ){}
 
   ngOnInit() {
-    this.clientService.getAllClient();
+    this.clientService.getAllClient().add(() => 
+    {
+      this.contractService.currentClient = this.clientService.listClient[0];
+      this.contractService.getAll(this.contractService.currentClient.id!)
+    });
   }
 }

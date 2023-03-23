@@ -1,0 +1,27 @@
+<div class="card">
+    <div>
+        <span class="card_param">Отель:</span>
+        &nbsp;
+        <span class="card_value">{{data.nameHotel}}</span>
+    </div>
+    <div>
+        <span class="card_param">Адрес:</span>
+        &nbsp;
+        <span class="card_value">{{data.addressHotel}}</span>
+    </div>
+    <div>
+        <span class="card_param">Стоимость путевки:</span>
+        &nbsp;
+        <span class="card_value">{{data.pricePermit * ((100 - data.sizeDiscount) / 100)}}&#8381;</span>
+    </div>
+    <div>
+        <span class="card_param">Даты действия путёвки:</span>
+        &nbsp;
+        <span class="card_value">{{data.timeStart | date:"dd.MM.yyyy"}} - {{data.timeFinish | date:"dd.MM.yyyy"}}</span>
+    </div>
+    <div>
+        <span class="card_param">Дата заключения договора:</span>
+        &nbsp;
+        <span class="card_value"> {{data.dateConclusion | date:"dd.MM.yyyy"}}</span>
+    </div>
+</div>

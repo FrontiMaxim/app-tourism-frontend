@@ -21,7 +21,7 @@ export class ContractService {
   private _listContract: ContractModel[];
 
   currentClient: ClientModel;
-  currentPermit: PermitModel; 
+  currentPermit: PermitModel | null; 
 
   save(contract: ContractModel) {
     this.http.post<HttpResponse<any>>(this._PATH, contract).subscribe({

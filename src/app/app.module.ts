@@ -23,6 +23,7 @@ import { CardDiscountComponent } from './discount/components/card-discount/card-
 import { FilterListPipe } from './pipes/filter-list.pipe';
 import { PageContractComponent } from './contract/pages/page-contract/page-contract.component';
 import { FormContractComponent } from './contract/components/form-contract/form-contract.component';
+import { CardContractComponent } from './contract/components/card-contract/card-contract.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { FormContractComponent } from './contract/components/form-contract/form-
     CardDiscountComponent,
     FilterListPipe,
     PageContractComponent,
-    FormContractComponent
+    FormContractComponent,
+    CardContractComponent
   ],
   imports: [
     BrowserModule,
