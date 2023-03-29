@@ -47,8 +47,6 @@ export class FormContractComponent {
       const home = this.contractService.currentPermit.hotel.home;
       const discount = this.contractService.currentPermit.discount;
 
-      const date = new Date();
-
       const contarct: ContractModel = {
         nameHotel: this.contractService.currentPermit.hotel.name,
         addressHotel: 
@@ -57,7 +55,7 @@ export class FormContractComponent {
         timeStart: this.contractService.currentPermit.timeStart,
         timeFinish: this.contractService.currentPermit.timeFinish,
         sizeDiscount:  discount ? discount.size : 0,
-        dateConclusion: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}` ,
+        dateConclusion:  new Date(Date.now()),
         client: this.contractService.currentClient
       }
 
